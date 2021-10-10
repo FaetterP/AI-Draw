@@ -16,5 +16,35 @@ namespace AI_Draw
         {
             InitializeComponent();
         }
+
+        private void OpenButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DrawButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ReadDataButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StartLearningButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GetErrorButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
