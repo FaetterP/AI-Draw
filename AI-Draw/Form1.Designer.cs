@@ -151,8 +151,6 @@ namespace AI_Draw
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ErrorText);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CountTextBox);
@@ -162,6 +160,8 @@ namespace AI_Draw
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.DrawButton);
             this.Controls.Add(this.OpenButton);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "AI Draw";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

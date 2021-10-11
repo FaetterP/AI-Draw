@@ -8,7 +8,7 @@ namespace AI_Draw
 {
     class MLP
     {
-        private double etha = 1;
+        private double etha = 0.1;
         private Random rnd = new Random();
         private double[][,] wmatrs;
         private double[][] training_inputs;
@@ -140,7 +140,7 @@ namespace AI_Draw
             return -Math.Log((1 / x) - 1);
         }
 
-        public void Predict(double[] input)
+        public double[] Predict(double[] input)
         {
             Array.Copy(input, layers[0], input.Length);
 
@@ -150,7 +150,8 @@ namespace AI_Draw
             }
             mult(layers[layers.Length - 2], wmatrs[layers.Length - 2], layers[layers.Length - 1], true);
 
-            PrintLayers();
+            return layers.Last();
+            //PrintLayers();
             //PrintW();
         }
 
