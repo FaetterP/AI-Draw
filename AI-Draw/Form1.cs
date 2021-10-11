@@ -19,7 +19,21 @@ namespace AI_Draw
 
         private void OpenButton_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog open_dialog = new OpenFileDialog();
+            open_dialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+            if (open_dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    Bitmap image = new Bitmap(open_dialog.FileName);
+                    pictureBox1.Size = image.Size;
+                    pictureBox1.Image = image;
+                }
+                catch
+                {
+                    DialogResult rezult = MessageBox.Show("Невозможно открыть выбранный файл", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void DrawButton_Click(object sender, EventArgs e)
@@ -30,6 +44,9 @@ namespace AI_Draw
         private void SaveButton_Click(object sender, EventArgs e)
         {
 
+            SaveFileDialog dialog = new SaveFileDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+                pictureBox1.Image.Save(dialog.FileName+".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
         }
 
         private void ReadDataButton_Click(object sender, EventArgs e)
