@@ -40,6 +40,7 @@ namespace AI_Draw
             this.ErrorText = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.ResetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -106,16 +107,16 @@ namespace AI_Draw
             // 
             // CountTextBox
             // 
-            this.CountTextBox.Location = new System.Drawing.Point(577, 81);
+            this.CountTextBox.Location = new System.Drawing.Point(797, 81);
             this.CountTextBox.Name = "CountTextBox";
             this.CountTextBox.Size = new System.Drawing.Size(100, 22);
             this.CountTextBox.TabIndex = 6;
-            this.CountTextBox.Text = "1000";
+            this.CountTextBox.Text = "10000";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(574, 61);
+            this.label1.Location = new System.Drawing.Point(794, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 17);
             this.label1.TabIndex = 7;
@@ -124,11 +125,10 @@ namespace AI_Draw
             // ErrorText
             // 
             this.ErrorText.AutoSize = true;
-            this.ErrorText.Location = new System.Drawing.Point(605, 122);
+            this.ErrorText.Location = new System.Drawing.Point(794, 122);
             this.ErrorText.Name = "ErrorText";
-            this.ErrorText.Size = new System.Drawing.Size(40, 17);
+            this.ErrorText.Size = new System.Drawing.Size(0, 17);
             this.ErrorText.TabIndex = 8;
-            this.ErrorText.Text = "Error";
             // 
             // pictureBox1
             // 
@@ -146,11 +146,22 @@ namespace AI_Draw
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
             // 
+            // ResetButton
+            // 
+            this.ResetButton.Location = new System.Drawing.Point(682, 157);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(106, 34);
+            this.ResetButton.TabIndex = 11;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(923, 450);
+            this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.ErrorText);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CountTextBox);
@@ -184,6 +195,7 @@ namespace AI_Draw
         private System.Windows.Forms.Label ErrorText;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button ResetButton;
     }
 }
 

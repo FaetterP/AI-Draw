@@ -141,13 +141,12 @@ namespace AI_Draw
 
         private void GetErrorButton_Click(object sender, EventArgs e)
         {
-            int index = rnd.Next(train_input.Length);
+            ErrorText.Text = mlp.GetErr().ToString();
+        }
 
-            ErrorText.Text = "";
-            foreach (var t in mlp.Predict(train_input[index]))
-            {
-                ErrorText.Text += t + "\n";
-            }
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            mlp.RandomW();
         }
     }
 }

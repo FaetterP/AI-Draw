@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AI_Draw
 {
@@ -40,6 +38,7 @@ namespace AI_Draw
             {
                 wmatrs[i] = new double[lengths[i] + 1, lengths[i + 1]];
             }
+            RandomW();
 
             errs = new double[layers.Length - 1][];
             for (int i = 0; i < errs.Length; i++)
@@ -140,6 +139,20 @@ namespace AI_Draw
             return -Math.Log((1 / x) - 1);
         }
 
+        public void RandomW()
+        {
+            for (int i = 0; i < wmatrs.Length; i++)
+            {
+                for (int j = 0; j < wmatrs[i].GetLength(0); j++)
+                {
+                    for (int k = 0; k < wmatrs[i].GetLength(1); k++)
+                    {
+                        wmatrs[i][j, k] = rnd.NextDouble() * 2 - 1;
+                    }
+                }
+            }
+        }
+
         public double[] Predict(double[] input)
         {
             Array.Copy(input, layers[0], input.Length);
@@ -151,10 +164,25 @@ namespace AI_Draw
             mult(layers[layers.Length - 2], wmatrs[layers.Length - 2], layers[layers.Length - 1], true);
 
             return layers.Last();
-            //PrintLayers();
-            //PrintW();
         }
 
+        public double GetErr()
+        {
+            List<double> errs = new List<double>();
+
+            for (int i = 0; i < training_inputs.Length; i++)
+            {
+                double added = 0;
+                double[] result = Predict(training_inputs[i]);
+                for (int j = 0; j < result.Length; j++)
+                {
+                    added += Math.Pow(result[j] - training_outputs[i][j], 2);
+                }
+                errs.Add(Math.Sqrt(added / result.Length));
+            }
+
+            return errs.Sum() / errs.Count;
+        }
 
         /*
          * ----------------------------------------
