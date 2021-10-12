@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AI_Draw
@@ -57,7 +53,7 @@ namespace AI_Draw
                     {
                         for (int i1 = 0; i1 < 8; i1++)
                         {
-                            input[8 * i0 + i1] = ((Bitmap)pictureBox1.Image).GetPixel(i + i0, j + i1).R;
+                            input[8 * i0 + i1] = (((Bitmap)pictureBox1.Image).GetPixel(i + i0, j + i1).R / 255.0) * 2 - 1;
                         }
                     }
 
@@ -94,7 +90,7 @@ namespace AI_Draw
 
             SaveFileDialog dialog = new SaveFileDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
-                pictureBox1.Image.Save(dialog.FileName + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                pictureBox2.Image.Save(dialog.FileName + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
         }
 
         private void ReadDataButton_Click(object sender, EventArgs e)
@@ -116,7 +112,7 @@ namespace AI_Draw
                     {
                         for (int i1 = 0; i1 < 8; i1++)
                         {
-                            train_input[i][i0 * 8 + i1] = ((int)((Bitmap)image).GetPixel(i0, i1).R / 255.0);
+                            train_input[i][i0 * 8 + i1] = (((Bitmap)image).GetPixel(i0, i1).R / 255.0) * 2 - 1;
                         }
                     }
 
