@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -77,8 +78,6 @@ namespace AI_Draw
                         if (matr_results[i, j] == 2 || matr_results[i, j] == 7) { int k = i; i = j; j = k; g.DrawLine(p, i, j + 8, i + 8, j); k = i; i = j; j = k; }
                         if (matr_results[i, j] == 3 || matr_results[i, j] == 8) { int k = i; i = j; j = k; g.DrawLine(p, i, j, i + 8, j + 8); k = i; i = j; j = k; }
                         if (matr_results[i, j] == 4 || matr_results[i, j] == 9) { }
-
-
                     }
                 }
 
@@ -124,8 +123,17 @@ namespace AI_Draw
                         train_output[i][j] = int.Parse(splited_name[j + 1]);
                     }
                 }
-                int[] lengths = new int[] { 64, 10 };
-                mlp = new MLP(lengths, train_input, train_output);
+
+                List<int> lengths = new List<int>();
+                lengths.Add(64);
+                foreach (var t in LayersTextBox.Text.Split(' ', ','))
+                {
+                    if (string.IsNullOrEmpty(t))
+                        continue;
+                    lengths.Add(int.Parse(t));
+                }
+                lengths.Add(10);
+                mlp = new MLP(lengths.ToArray(), train_input, train_output);
             }
         }
 

@@ -41,6 +41,8 @@ namespace AI_Draw
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ResetButton = new System.Windows.Forms.Button();
+            this.LayersTextBox = new System.Windows.Forms.TextBox();
+            this.LayersLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -156,11 +158,29 @@ namespace AI_Draw
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
+            // LayersTextBox
+            // 
+            this.LayersTextBox.Location = new System.Drawing.Point(798, 33);
+            this.LayersTextBox.Name = "LayersTextBox";
+            this.LayersTextBox.Size = new System.Drawing.Size(100, 22);
+            this.LayersTextBox.TabIndex = 12;
+            // 
+            // LayersLabel
+            // 
+            this.LayersLabel.AutoSize = true;
+            this.LayersLabel.Location = new System.Drawing.Point(795, 12);
+            this.LayersLabel.Name = "LayersLabel";
+            this.LayersLabel.Size = new System.Drawing.Size(95, 17);
+            this.LayersLabel.TabIndex = 13;
+            this.LayersLabel.Text = "Hidden layers";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 450);
+            this.ClientSize = new System.Drawing.Size(912, 450);
+            this.Controls.Add(this.LayersLabel);
+            this.Controls.Add(this.LayersTextBox);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.ErrorText);
             this.Controls.Add(this.label1);
@@ -196,6 +216,8 @@ namespace AI_Draw
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button ResetButton;
+        private System.Windows.Forms.TextBox LayersTextBox;
+        private System.Windows.Forms.Label LayersLabel;
     }
 }
 
