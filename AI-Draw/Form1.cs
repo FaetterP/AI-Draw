@@ -65,14 +65,12 @@ namespace AI_Draw
 
             using (Graphics g = Graphics.FromImage(pictureBox2.Image))
             {
-
                 Pen p = new Pen(Color.FromArgb(50, 0, 0, 0), (float)0.1);
                 g.Clear(Color.White);
                 for (int i = 0; i < matr_results.GetLength(0); i++)
                 {
                     for (int j = 0; j < matr_results.GetLength(1); j++)
                     {
-                        //if (i == 50) { label3.Text += matr_results[i, j] + " "; }
                         if (matr_results[i, j] == 0 || matr_results[i, j] == 5) { int k = i; i = j; j = k; g.DrawLine(p, i, j + 4, i + 8, j + 4); k = i; i = j; j = k; }
                         if (matr_results[i, j] == 1 || matr_results[i, j] == 6) { int k = i; i = j; j = k; g.DrawLine(p, i + 4, j, i + 4, j + 8); k = i; i = j; j = k; }
                         if (matr_results[i, j] == 2 || matr_results[i, j] == 7) { int k = i; i = j; j = k; g.DrawLine(p, i, j + 8, i + 8, j); k = i; i = j; j = k; }
@@ -80,7 +78,6 @@ namespace AI_Draw
                         if (matr_results[i, j] == 4 || matr_results[i, j] == 9) { }
                     }
                 }
-
             }
         }
 
