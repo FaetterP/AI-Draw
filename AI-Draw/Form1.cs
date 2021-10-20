@@ -73,8 +73,8 @@ namespace AI_Draw
                     {
                         if (matr_results[i, j] == 0 || matr_results[i, j] == 5) { int k = i; i = j; j = k; g.DrawLine(p, i, j + 4, i + 8, j + 4); k = i; i = j; j = k; }
                         if (matr_results[i, j] == 1 || matr_results[i, j] == 6) { int k = i; i = j; j = k; g.DrawLine(p, i + 4, j, i + 4, j + 8); k = i; i = j; j = k; }
-                        if (matr_results[i, j] == 2 || matr_results[i, j] == 7) { int k = i; i = j; j = k; g.DrawLine(p, i, j + 8, i + 8, j); k = i; i = j; j = k; }
-                        if (matr_results[i, j] == 3 || matr_results[i, j] == 8) { int k = i; i = j; j = k; g.DrawLine(p, i, j, i + 8, j + 8); k = i; i = j; j = k; }
+                        if (matr_results[i, j] == 3 || matr_results[i, j] == 8) { int k = i; i = j; j = k; g.DrawLine(p, i, j + 8, i + 8, j); k = i; i = j; j = k; }
+                        if (matr_results[i, j] == 2 || matr_results[i, j] == 7) { int k = i; i = j; j = k; g.DrawLine(p, i, j, i + 8, j + 8); k = i; i = j; j = k; }
                         if (matr_results[i, j] == 4 || matr_results[i, j] == 9) { }
                     }
                 }
