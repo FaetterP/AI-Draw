@@ -47,5 +47,7 @@ ____
 ____
 Пример результата:    
 ![orig](https://user-images.githubusercontent.com/56697273/137812056-8797e019-93a6-4b28-aee4-2297d3c7fe4d.png)    
-![draw](https://user-images.githubusercontent.com/56697273/137812061-c46dd901-c499-40a8-8c9e-b09efe20c352.jpg)
-
+![draw](https://user-images.githubusercontent.com/56697273/137812061-c46dd901-c499-40a8-8c9e-b09efe20c352.jpg)    
+Изображение после исправления диагоналей.    
+![draw_new](https://user-images.githubusercontent.com/56697273/138164518-431ca038-4aae-495b-b205-ad4112363669.jpg)    
+Эти пустые глаза меня пугают...
