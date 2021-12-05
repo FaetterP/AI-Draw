@@ -9,7 +9,6 @@ namespace AI_Draw
 {
     public partial class Form1 : Form
     {
-        private Random rnd = new Random();
         private MLP mlp;
         private double[][] train_input;
         private double[][] train_output;
@@ -40,14 +39,15 @@ namespace AI_Draw
 
         private void DrawButton_Click(object sender, EventArgs e)
         {
-            int size1 = pictureBox1.Image.Width, size2 = pictureBox1.Image.Height;
-            int[,] matr_results = new int[size2 - 8, size1 - 8];
-            pictureBox2.Size = new Size(size1, size2);
-            pictureBox2.Image = new Bitmap(size1, size2);
+            int sizeX = pictureBox1.Image.Width, sizeY = pictureBox1.Image.Height;
 
-            for (int i = 0; i < size1 - 8; i++)
+            int[,] matr_results = new int[sizeX - 8, sizeY - 8];
+            pictureBox2.Size = new Size(sizeX, sizeY);
+            pictureBox2.Image = new Bitmap(sizeX, sizeY);
+
+            for (int i = 0; i < sizeX - 8; i++)
             {
-                for (int j = 0; j < size2 - 8; j++)
+                for (int j = 0; j < sizeY - 8; j++)
                 {
                     double[] input = new double[64];
                     for (int i0 = 0; i0 < 8; i0++)
@@ -59,7 +59,7 @@ namespace AI_Draw
                     }
 
                     double[] output = mlp.Predict(input);
-                    matr_results[j, i] = Array.IndexOf(output, output.Max());
+                    matr_results[i, j] = Array.IndexOf(output, output.Max());
                 }
             }
 
@@ -71,10 +71,18 @@ namespace AI_Draw
                 {
                     for (int j = 0; j < matr_results.GetLength(1); j++)
                     {
-                        if (matr_results[i, j] == 0 || matr_results[i, j] == 5) { int k = i; i = j; j = k; g.DrawLine(p, i, j + 4, i + 8, j + 4); k = i; i = j; j = k; }
-                        if (matr_results[i, j] == 1 || matr_results[i, j] == 6) { int k = i; i = j; j = k; g.DrawLine(p, i + 4, j, i + 4, j + 8); k = i; i = j; j = k; }
-                        if (matr_results[i, j] == 3 || matr_results[i, j] == 8) { int k = i; i = j; j = k; g.DrawLine(p, i, j + 8, i + 8, j); k = i; i = j; j = k; }
-                        if (matr_results[i, j] == 2 || matr_results[i, j] == 7) { int k = i; i = j; j = k; g.DrawLine(p, i, j, i + 8, j + 8); k = i; i = j; j = k; }
+                        if (matr_results[i, j] == 0 || matr_results[i, j] == 5)
+                            g.DrawLine(p, i, j + 4, i + 8, j + 4);
+
+                        if (matr_results[i, j] == 1 || matr_results[i, j] == 6)
+                            g.DrawLine(p, i + 4, j, i + 4, j + 8);
+
+                        if (matr_results[i, j] == 2 || matr_results[i, j] == 7)
+                            g.DrawLine(p, i, j, i + 8, j + 8);
+
+                        if (matr_results[i, j] == 3 || matr_results[i, j] == 8)
+                            g.DrawLine(p, i, j + 8, i + 8, j);
+
                         if (matr_results[i, j] == 4 || matr_results[i, j] == 9) { }
                     }
                 }
@@ -83,7 +91,6 @@ namespace AI_Draw
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-
             SaveFileDialog dialog = new SaveFileDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
                 pictureBox2.Image.Save(dialog.FileName + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
