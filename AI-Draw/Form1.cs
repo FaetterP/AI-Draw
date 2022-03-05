@@ -42,8 +42,6 @@ namespace AI_Draw
             int sizeX = pictureBox1.Image.Width, sizeY = pictureBox1.Image.Height;
 
             int[,] matr_results = new int[sizeX - 8, sizeY - 8];
-            pictureBox2.Size = new Size(sizeX, sizeY);
-            pictureBox2.Image = new Bitmap(sizeX, sizeY);
 
             for (int i = 0; i < sizeX - 8; i++)
             {
@@ -61,7 +59,11 @@ namespace AI_Draw
                     double[] output = mlp.Predict(input);
                     matr_results[i, j] = Array.IndexOf(output, output.Max());
                 }
+                progressBar.Value = (int)Math.Ceiling(100 * i / (sizeX - 8 * 1.0));
             }
+
+            pictureBox2.Size = new Size(sizeX, sizeY);
+            pictureBox2.Image = new Bitmap(sizeX, sizeY);
 
             using (Graphics g = Graphics.FromImage(pictureBox2.Image))
             {
@@ -126,6 +128,8 @@ namespace AI_Draw
                     {
                         train_output[i][j] = int.Parse(splited_name[j + 1]);
                     }
+
+                    progressBar.Value = (int)Math.Ceiling(100.0 * i / files.Length);
                 }
 
                 List<int> lengths = new List<int>();
@@ -144,7 +148,7 @@ namespace AI_Draw
         private void StartLearningButton_Click(object sender, EventArgs e)
         {
             int count = int.Parse(CountTextBox.Text);
-            mlp.Train(count);
+            mlp.Train(count, progressBar);
         }
 
         private void GetErrorButton_Click(object sender, EventArgs e)

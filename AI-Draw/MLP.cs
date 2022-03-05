@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace AI_Draw
 {
@@ -48,34 +49,40 @@ namespace AI_Draw
             //errs[errs.Length - 1] = new double[lengths.Last()];
         }
 
-        public void Train(int count)
+        public void Train(int count, ProgressBar bar)
         {
             for (int i = 0; i < count; i++)
             {
-                int index = rnd.Next(training_inputs.Length);
-                double[] toTrain = training_inputs[index];
-                Array.Copy(toTrain, layers[0], toTrain.Length);
-
-                for (int j = 0; j < layers.Length - 2; j++)
-                {
-                    mult(layers[j], wmatrs[j], layers[j + 1], false);
-                }
-                mult(layers[layers.Length - 2], wmatrs[layers.Length - 2], layers[layers.Length - 1], true);
-
-
-                for (int j = 0; j < errs[errs.Length - 1].Length; j++)
-                {
-                    errs[errs.Length - 1][j] = training_outputs[index][j] - layers.Last()[j];
-                }
-
-                FindErr();
-                //PrintErrs();
-                //PrintLayers();
-                //PrintW();
-                FixErr();
-                //Console.WriteLine("=============================================");
+                TrainStep();
+                bar.Value = (int)Math.Ceiling(100.0 * i / count);
             }
 
+        }
+
+        private void TrainStep()
+        {
+            int index = rnd.Next(training_inputs.Length);
+            double[] toTrain = training_inputs[index];
+            Array.Copy(toTrain, layers[0], toTrain.Length);
+
+            for (int j = 0; j < layers.Length - 2; j++)
+            {
+                mult(layers[j], wmatrs[j], layers[j + 1], false);
+            }
+            mult(layers[layers.Length - 2], wmatrs[layers.Length - 2], layers[layers.Length - 1], true);
+
+
+            for (int j = 0; j < errs[errs.Length - 1].Length; j++)
+            {
+                errs[errs.Length - 1][j] = training_outputs[index][j] - layers.Last()[j];
+            }
+
+            FindErr();
+            //PrintErrs();
+            //PrintLayers();
+            //PrintW();
+            FixErr();
+            //Console.WriteLine("=============================================");
         }
 
         private void mult(double[] N1, double[,] W12, double[] N2, bool IsLast)

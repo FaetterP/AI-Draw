@@ -43,6 +43,7 @@ namespace AI_Draw
             this.ResetButton = new System.Windows.Forms.Button();
             this.LayersTextBox = new System.Windows.Forms.TextBox();
             this.LayersLabel = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -164,6 +165,7 @@ namespace AI_Draw
             this.LayersTextBox.Name = "LayersTextBox";
             this.LayersTextBox.Size = new System.Drawing.Size(100, 22);
             this.LayersTextBox.TabIndex = 12;
+            this.LayersTextBox.Text = "32";
             // 
             // LayersLabel
             // 
@@ -174,11 +176,19 @@ namespace AI_Draw
             this.LayersLabel.TabIndex = 13;
             this.LayersLabel.Text = "Hidden layers";
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(259, 12);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(417, 23);
+            this.progressBar.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 450);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.LayersLabel);
             this.Controls.Add(this.LayersTextBox);
             this.Controls.Add(this.ResetButton);
@@ -218,6 +228,7 @@ namespace AI_Draw
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.TextBox LayersTextBox;
         private System.Windows.Forms.Label LayersLabel;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 
