@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AI_Draw.Perceptron;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -9,7 +10,7 @@ namespace AI_Draw
 {
     public partial class Form1 : Form
     {
-        private MLP mlp;
+        private TrainableMLP mlp;
         private double[][] train_input;
         private double[][] train_output;
 
@@ -100,19 +101,17 @@ namespace AI_Draw
 
         private void CreatePerceptronButton_Click(object sender, EventArgs e)
         {
-            
+            List<int> lengths = new List<int>();
+            lengths.Add(64);
+            foreach (var t in LayersTextBox.Text.Split(' ', ','))
+            {
+                if (string.IsNullOrEmpty(t))
+                    continue;
+                lengths.Add(int.Parse(t));
+            }
+            lengths.Add(10);
 
-                List<int> lengths = new List<int>();
-                lengths.Add(64);
-                foreach (var t in LayersTextBox.Text.Split(' ', ','))
-                {
-                    if (string.IsNullOrEmpty(t))
-                        continue;
-                    lengths.Add(int.Parse(t));
-                }
-                lengths.Add(10);
-                mlp = new MLP(lengths.ToArray());
-            
+            mlp = new TrainableMLP(lengths.ToArray());
         }
 
         private void StartLearningButton_Click(object sender, EventArgs e)
@@ -123,7 +122,7 @@ namespace AI_Draw
 
         private void GetErrorButton_Click(object sender, EventArgs e)
         {
-            ErrorText.Text = mlp.GetErr().ToString();
+            ErrorText.Text = mlp.GetMeanSquaredError(train_input, train_output).ToString();
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
@@ -165,6 +164,6 @@ namespace AI_Draw
                     progressBar.Value = (int)Math.Ceiling(100.0 * i / files.Length);
                 }
             }
-            }
+        }
     }
 }
