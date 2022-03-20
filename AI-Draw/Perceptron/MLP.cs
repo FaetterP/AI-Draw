@@ -15,10 +15,8 @@ namespace AI_Draw
         private double[][] layers;
         private double[][] errs;
 
-        public MLP(int[] lengths, double[][] training_inputs, double[][] training_outputs)
+        public MLP(int[] lengths)
         {
-            this.training_inputs = training_inputs;
-            this.training_outputs = training_outputs;
 
             layers = new double[lengths.Length][];
             for (int i = 0; i < lengths.Length; i++)
@@ -49,8 +47,11 @@ namespace AI_Draw
             //errs[errs.Length - 1] = new double[lengths.Last()];
         }
 
-        public void Train(int count, ProgressBar bar)
+        public void Train(double[][] training_inputs, double[][] training_outputs, int count, ProgressBar bar)
         {
+            this.training_inputs = training_inputs;
+            this.training_outputs = training_outputs;
+
             for (int i = 0; i < count; i++)
             {
                 TrainStep();

@@ -32,7 +32,7 @@ namespace AI_Draw
             this.OpenButton = new System.Windows.Forms.Button();
             this.DrawButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.ReadDataButton = new System.Windows.Forms.Button();
+            this.CreatePerceptronButton = new System.Windows.Forms.Button();
             this.StartLearningButton = new System.Windows.Forms.Button();
             this.GetErrorButton = new System.Windows.Forms.Button();
             this.CountTextBox = new System.Windows.Forms.TextBox();
@@ -44,6 +44,7 @@ namespace AI_Draw
             this.LayersTextBox = new System.Windows.Forms.TextBox();
             this.LayersLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.ReadDataButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -78,19 +79,19 @@ namespace AI_Draw
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // ReadDataButton
+            // CreatePerceptronButton
             // 
-            this.ReadDataButton.Location = new System.Drawing.Point(682, 12);
-            this.ReadDataButton.Name = "ReadDataButton";
-            this.ReadDataButton.Size = new System.Drawing.Size(106, 43);
-            this.ReadDataButton.TabIndex = 3;
-            this.ReadDataButton.Text = "Read learning data";
-            this.ReadDataButton.UseVisualStyleBackColor = true;
-            this.ReadDataButton.Click += new System.EventHandler(this.ReadDataButton_Click);
+            this.CreatePerceptronButton.Location = new System.Drawing.Point(682, 12);
+            this.CreatePerceptronButton.Name = "CreatePerceptronButton";
+            this.CreatePerceptronButton.Size = new System.Drawing.Size(106, 43);
+            this.CreatePerceptronButton.TabIndex = 3;
+            this.CreatePerceptronButton.Text = "Create perceptron";
+            this.CreatePerceptronButton.UseVisualStyleBackColor = true;
+            this.CreatePerceptronButton.Click += new System.EventHandler(this.CreatePerceptronButton_Click);
             // 
             // StartLearningButton
             // 
-            this.StartLearningButton.Location = new System.Drawing.Point(682, 61);
+            this.StartLearningButton.Location = new System.Drawing.Point(682, 110);
             this.StartLearningButton.Name = "StartLearningButton";
             this.StartLearningButton.Size = new System.Drawing.Size(106, 42);
             this.StartLearningButton.TabIndex = 4;
@@ -100,7 +101,7 @@ namespace AI_Draw
             // 
             // GetErrorButton
             // 
-            this.GetErrorButton.Location = new System.Drawing.Point(682, 109);
+            this.GetErrorButton.Location = new System.Drawing.Point(682, 158);
             this.GetErrorButton.Name = "GetErrorButton";
             this.GetErrorButton.Size = new System.Drawing.Size(106, 42);
             this.GetErrorButton.TabIndex = 5;
@@ -110,7 +111,7 @@ namespace AI_Draw
             // 
             // CountTextBox
             // 
-            this.CountTextBox.Location = new System.Drawing.Point(797, 81);
+            this.CountTextBox.Location = new System.Drawing.Point(797, 130);
             this.CountTextBox.Name = "CountTextBox";
             this.CountTextBox.Size = new System.Drawing.Size(100, 22);
             this.CountTextBox.TabIndex = 6;
@@ -119,7 +120,7 @@ namespace AI_Draw
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(794, 61);
+            this.label1.Location = new System.Drawing.Point(794, 110);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 17);
             this.label1.TabIndex = 7;
@@ -128,7 +129,7 @@ namespace AI_Draw
             // ErrorText
             // 
             this.ErrorText.AutoSize = true;
-            this.ErrorText.Location = new System.Drawing.Point(794, 122);
+            this.ErrorText.Location = new System.Drawing.Point(794, 171);
             this.ErrorText.Name = "ErrorText";
             this.ErrorText.Size = new System.Drawing.Size(0, 17);
             this.ErrorText.TabIndex = 8;
@@ -151,7 +152,7 @@ namespace AI_Draw
             // 
             // ResetButton
             // 
-            this.ResetButton.Location = new System.Drawing.Point(682, 157);
+            this.ResetButton.Location = new System.Drawing.Point(682, 206);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(106, 34);
             this.ResetButton.TabIndex = 11;
@@ -183,11 +184,22 @@ namespace AI_Draw
             this.progressBar.Size = new System.Drawing.Size(417, 23);
             this.progressBar.TabIndex = 14;
             // 
+            // ReadDataButton
+            // 
+            this.ReadDataButton.Location = new System.Drawing.Point(682, 61);
+            this.ReadDataButton.Name = "ReadDataButton";
+            this.ReadDataButton.Size = new System.Drawing.Size(106, 43);
+            this.ReadDataButton.TabIndex = 15;
+            this.ReadDataButton.Text = "Read learning data";
+            this.ReadDataButton.UseVisualStyleBackColor = true;
+            this.ReadDataButton.Click += new System.EventHandler(this.ReadDataButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 450);
+            this.Controls.Add(this.ReadDataButton);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.LayersLabel);
             this.Controls.Add(this.LayersTextBox);
@@ -197,7 +209,7 @@ namespace AI_Draw
             this.Controls.Add(this.CountTextBox);
             this.Controls.Add(this.GetErrorButton);
             this.Controls.Add(this.StartLearningButton);
-            this.Controls.Add(this.ReadDataButton);
+            this.Controls.Add(this.CreatePerceptronButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.DrawButton);
             this.Controls.Add(this.OpenButton);
@@ -217,7 +229,7 @@ namespace AI_Draw
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button DrawButton;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Button ReadDataButton;
+        private System.Windows.Forms.Button CreatePerceptronButton;
         private System.Windows.Forms.Button StartLearningButton;
         private System.Windows.Forms.Button GetErrorButton;
         private System.Windows.Forms.TextBox CountTextBox;
@@ -229,6 +241,7 @@ namespace AI_Draw
         private System.Windows.Forms.TextBox LayersTextBox;
         private System.Windows.Forms.Label LayersLabel;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button ReadDataButton;
     }
 }
 

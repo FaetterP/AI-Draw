@@ -98,6 +98,39 @@ namespace AI_Draw
                 pictureBox2.Image.Save(dialog.FileName + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
         }
 
+        private void CreatePerceptronButton_Click(object sender, EventArgs e)
+        {
+            
+
+                List<int> lengths = new List<int>();
+                lengths.Add(64);
+                foreach (var t in LayersTextBox.Text.Split(' ', ','))
+                {
+                    if (string.IsNullOrEmpty(t))
+                        continue;
+                    lengths.Add(int.Parse(t));
+                }
+                lengths.Add(10);
+                mlp = new MLP(lengths.ToArray());
+            
+        }
+
+        private void StartLearningButton_Click(object sender, EventArgs e)
+        {
+            int count = int.Parse(CountTextBox.Text);
+            mlp.Train(train_input, train_output, count, progressBar);
+        }
+
+        private void GetErrorButton_Click(object sender, EventArgs e)
+        {
+            ErrorText.Text = mlp.GetErr().ToString();
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            mlp.RandomW();
+        }
+
         private void ReadDataButton_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -131,34 +164,7 @@ namespace AI_Draw
 
                     progressBar.Value = (int)Math.Ceiling(100.0 * i / files.Length);
                 }
-
-                List<int> lengths = new List<int>();
-                lengths.Add(64);
-                foreach (var t in LayersTextBox.Text.Split(' ', ','))
-                {
-                    if (string.IsNullOrEmpty(t))
-                        continue;
-                    lengths.Add(int.Parse(t));
-                }
-                lengths.Add(10);
-                mlp = new MLP(lengths.ToArray(), train_input, train_output);
             }
-        }
-
-        private void StartLearningButton_Click(object sender, EventArgs e)
-        {
-            int count = int.Parse(CountTextBox.Text);
-            mlp.Train(count, progressBar);
-        }
-
-        private void GetErrorButton_Click(object sender, EventArgs e)
-        {
-            ErrorText.Text = mlp.GetErr().ToString();
-        }
-
-        private void ResetButton_Click(object sender, EventArgs e)
-        {
-            mlp.RandomW();
-        }
+            }
     }
 }
